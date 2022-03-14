@@ -1,40 +1,88 @@
 package com.example.geometrie.backend.controller;
 
-import com.example.geometrie.backend.entity.Carre;
-import com.example.geometrie.backend.entity.Cercle;
-import com.example.geometrie.backend.entity.Rectangle;
-import com.example.geometrie.backend.entity.TriangleRectangle;
+
+import static com.example.geometrie.backend.entity.FigureGeometriqueInterface.*;
 
 public class MainController {
-    double calculAire;
-    double calculperimetre;
+    private  String aire;
+    private String perimetre;
 
-    Carre carre = new Carre();
-    double aireCarre = carre.getCote()* carre.getCote();
-
-
-    double perimetreCarre = carre.getCote()*4;
-
-
-    Cercle cercle = new Cercle();
-    double aireCercle = cercle.getPi()*(cercle.getRayon()*cercle.getRayon());
-
-    double perimetreCercle = 2 *cercle.getPi()*cercle.getRayon();
+    private double result;
+    private String errorMessage;
 
 
 
-    Rectangle rectangle = new Rectangle();
-    double aireRectangle = rectangle.getLongueur()+rectangle.getLargeur();
-
-    double perimetreRectangle = (rectangle.getLongueur() + rectangle.getLargeur())*2;
-
+    public MainController(String aire, String perimetre){
+        this.aire = aire;
+        this.perimetre = perimetre;
 
 
-    TriangleRectangle triangleRectangle = new TriangleRectangle();
-    double aireTriangleRectangle = (triangleRectangle.getLongueur()*triangleRectangle.getLongueur())/2;
+        switch (aire){
+            case ("Carre"):
+                this.result = aireCarre;
+                break;
+            case("Rectangle"):
+                this.result = aireRectangle;
+                break;
+            case ("Triangle Rectangle"):
+                this.result = aireTriangleRectangle;
+                break;
+            case ("Cercle"):
+                this.result = aireCercle;
+                break;
+            default:
+                errorMessage = "Cette figure n'a pas d'aire";
 
-    double hypotenuse = java.lang.Math.sqrt(((triangleRectangle.getLargeur()*triangleRectangle.getLargeur())+(triangleRectangle.getLongueur()*triangleRectangle.getLongueur())));
+        }
 
-    double perimetreTriangleRectangle = triangleRectangle.getLargeur()+triangleRectangle.getLongueur()+hypotenuse;
+        switch (perimetre){
+            case ("Carre"):
+                this.result = perimetreCarre;
+                break;
+            case ("Rectangle"):
+                this.result = perimetreRectangle;
+                break;
+            case ("Triangle Rectangle"):
+                this.result = perimetreTriangleRectangle;
+                break;
+            case ("Cercle"):
+                this.result = perimetreCercle;
+                break;
+            default:
+                errorMessage = " Cette figure n'a pas de périmètre";
+        }
 
+    }
+
+    public String getAire() {
+        return aire;
+    }
+
+    public void setAire(String aire) {
+        this.aire = aire;
+    }
+
+    public String getPerimetre() {
+        return perimetre;
+    }
+
+    public void setPerimetre(String perimetre) {
+        this.perimetre = perimetre;
+    }
+
+    public double getResult() {
+        return result;
+    }
+
+    public void setResult(double result) {
+        this.result = result;
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
+    }
 }
