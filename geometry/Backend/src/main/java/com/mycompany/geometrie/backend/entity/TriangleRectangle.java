@@ -2,33 +2,26 @@ package com.mycompany.geometrie.backend.entity;
 
 
 public class TriangleRectangle implements FigureGeometriqueInterface {
-    private double longueur;
-    private double largeur;
+    private double base;
+    private double hauteur;
+    private double hypotenuse;
 
-
-    public TriangleRectangle() {
+    public TriangleRectangle(Double base, Double hauteur, Double hypotenuse) {
+        super();
     }
 
-    public TriangleRectangle(double longueur, double largeur, double hypothenuse) {
-        this.longueur = longueur;
-        this.largeur = largeur;
-    }
-
-    public double getLongueur() {
-        return longueur;
-    }
-
-    public void setLongueur(double longueur) {
-        this.longueur = longueur;
-    }
-
-    public double getLargeur() {
-        return largeur;
-    }
-
-    public void setLargeur(double largeur) {
-        this.largeur = largeur;
+    public void calculHypotenuse(){
+        this.hypotenuse = Math.sqrt((this.base*this.base)+(this.hauteur*this.hauteur));
     }
 
 
+    @Override
+    public double calculAire() {
+        return (base*hauteur)/2;
+    }
+
+    @Override
+    public double calculPerimetre() {
+        return base + hauteur + hypotenuse;
+    }
 }

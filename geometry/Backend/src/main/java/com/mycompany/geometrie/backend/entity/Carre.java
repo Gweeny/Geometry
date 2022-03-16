@@ -1,20 +1,23 @@
 package com.mycompany.geometrie.backend.entity;
 
-public class Carre implements FigureGeometriqueInterface{
-    private double cote;
+public class Carre extends Quadrillatere implements FigureGeometriqueInterface{
 
-    public Carre() {
-    }
 
     public Carre(double cote) {
-        this.cote = cote;
+        super (cote);
     }
 
-    public double getCote() {
-        return cote;
+    @Override
+    public double calculAire() {
+        return this.getCote()*this.getCote();
     }
 
-    public void setCote(double cote) {
-        this.cote = cote;
+    @Override
+    public double calculPerimetre() {
+        return this.getCote()*4;
     }
+
+
+
+
 }

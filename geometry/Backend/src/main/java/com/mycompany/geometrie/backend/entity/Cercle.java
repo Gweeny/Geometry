@@ -4,22 +4,17 @@ public class Cercle implements FigureGeometriqueInterface{
     private final double pi = Math.PI;
     private double rayon;
 
-    public Cercle() {
+    public Cercle(Double rayon, Double pi) {
+        super();
     }
 
-    public Cercle(double rayon) {
-        this.rayon = rayon;
+    @Override
+    public double calculAire() {
+        return pi*(rayon*rayon);
     }
 
-    public double getPi() {
-        return pi;
-    }
-
-    public double getRayon() {
-        return rayon;
-    }
-
-    public void setRayon(double rayon) {
-        this.rayon = rayon;
+    @Override
+    public double calculPerimetre() {
+        return 2*pi*rayon;
     }
 }
